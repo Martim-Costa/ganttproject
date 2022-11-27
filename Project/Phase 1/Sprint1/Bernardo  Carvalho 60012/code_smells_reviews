@@ -1,0 +1,17 @@
+Unnecessary commentary --> reviewed by Pedro Arruda 60663 - 21/10/2022
+
+Good identification of unnecessary commentary in the code but could perhaps be added a better explanation on why this is a bad habit.
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+Massive Method --> Reviewed by Ana Gadelha 59943 - 21/10/2022
+
+I agree, a method with 93 lines is too big, and the suggestion to solve it is also suitable.
+--------------------------------------------------------------------------------------------------------------------------------------------
+Large class --> Reviewed by Martim Costa 64901 - 21/10/22
+
+A class with 400 lines it is a class with a considerable size. 
+It would be better to spread it between smaller classes.
+--------------------------------------------------------------------------------------------------------------------------------------------
+Large Class --> Reviewed by Rodrigo Mesquita 57372 - 21/10/2022
+
+A class that long really is exhaustive to understand. Your suggestion would work just fine.
