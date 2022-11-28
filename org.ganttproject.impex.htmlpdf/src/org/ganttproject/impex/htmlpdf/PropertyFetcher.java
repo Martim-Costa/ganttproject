@@ -76,7 +76,7 @@ public class PropertyFetcher {
   public void getResourceAttributes(HumanResource hr, Map<String, String> id2value) {
     id2value.put(ResourceDefaultColumn.NAME.getStub().getID(), hr.getName());
     id2value.put(ResourceDefaultColumn.ROLE.getStub().getID(), hr.getRole().getName());
-    id2value.put(ResourceDefaultColumn.TEST.getStub().getID(), hr.getCompletedTasks());
+    id2value.put(ResourceDefaultColumn.TODO.getStub().getID(), hr.getCompletedTasks());
     id2value.put(ResourceDefaultColumn.EMAIL.getStub().getID(), hr.getMail());
     id2value.put(ResourceDefaultColumn.PHONE.getStub().getID(), hr.getPhone());
     id2value.put(ResourceDefaultColumn.STANDARD_RATE.getStub().getID(), hr.getStandardPayRate().toPlainString());
