@@ -46,6 +46,7 @@ public class HumanResource implements CustomPropertyHolder {
    */
   private boolean areEventsEnabled = true;
 
+  private String teste;
   private int id = -1;
 
   private String name;
@@ -136,6 +137,7 @@ public class HumanResource implements CustomPropertyHolder {
     fireResourceChanged();
   }
 
+
   public String getName() {
     return Strings.nullToEmpty(name);
   }
@@ -218,6 +220,16 @@ public class HumanResource implements CustomPropertyHolder {
 
   public ResourceAssignment[] getAssignments() {
     return myAssignments.toArray(new ResourceAssignment[0]);
+  }
+
+  public String getNumberOfAssignments(){
+
+    return String.valueOf(myAssignments.size());
+  }
+
+  public void setNumberOfAssignments(){
+
+    teste = String.valueOf(myAssignments.size());
   }
 
   public HumanResource unpluggedClone() {

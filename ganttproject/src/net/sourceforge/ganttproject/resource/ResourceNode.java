@@ -72,11 +72,16 @@ public class ResourceNode extends ResourceTableNode {
     return resource.getRole();
   }
 
+  public void setTeste(String number){ resource.setNumberOfAssignments(); }
+
+  public String getTeste(){ return resource.getNumberOfAssignments(); }
+
   @Override
   public Object getStandardField(ResourceDefaultColumn def) {
     switch (def) {
     case NAME: return getName();
     case ROLE: return getDefaultRole();
+    case TEST: return getTeste();
     case EMAIL: return getEMail();
     case PHONE: return getPhone();
     case STANDARD_RATE: return getResource().getStandardPayRate();
@@ -98,6 +103,9 @@ public class ResourceNode extends ResourceTableNode {
       return;
     case ROLE:
       setDefaultRole((Role) value);
+      return;
+    case TEST:
+      setTeste(value.toString());
       return;
     case STANDARD_RATE:
       assert value instanceof Double : "Rate accepts numeric values";
