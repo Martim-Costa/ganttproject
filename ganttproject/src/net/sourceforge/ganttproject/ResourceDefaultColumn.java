@@ -34,9 +34,9 @@ import biz.ganttproject.core.table.ColumnList.Column;
  * @author dbarashev (Dmitry Barashev)
  */
 public enum ResourceDefaultColumn {
-  NAME(new ColumnList.ColumnStub("0", null, true, 0, 200), String.class, "tableColResourceName", true),
-  ROLE(new ColumnList.ColumnStub("1", null, true, 1, 100), String.class, "tableColResourceRole", true),
-  TODO(new ColumnList.ColumnStub("6", null, true, 2, 65), String.class, "todo", false),
+  NAME(new ColumnList.ColumnStub("0", null, true, 0, 150), String.class, "tableColResourceName", true),
+  ROLE(new ColumnList.ColumnStub("1", null, true, 1, 85), String.class, "tableColResourceRole", true),
+  TODO(new ColumnList.ColumnStub("6", null, true, 2, 100), String.class, "todo", false),
   EMAIL(new ColumnList.ColumnStub("2", null, false, -1, 75), String.class, "tableColResourceEMail", true),
   PHONE(new ColumnList.ColumnStub("3", null, false, -1, 50), String.class, "tableColResourcePhone", true),
   ROLE_IN_TASK(new ColumnList.ColumnStub("4", null, false, -1, 75), String.class, "tableColResourceRoleForTask", true),
