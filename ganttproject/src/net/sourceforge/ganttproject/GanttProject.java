@@ -82,6 +82,9 @@ import net.sourceforge.ganttproject.task.TaskManager;
 import net.sourceforge.ganttproject.task.TaskManagerConfig;
 import net.sourceforge.ganttproject.task.TaskManagerImpl;
 
+//
+import net.sourceforge.ganttproject.action.Stats.StatsMenu;
+
 import javax.annotation.Nullable;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -340,8 +343,14 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
     mHuman.add(myResourceActions.getResourceSendMailAction());
     bar.add(mHuman);
 
+
+    StatsMenu statsMenu =new StatsMenu(getProject(), getUIFacade(), getProjectUIFacade());
+    bar.add(statsMenu.createMenu());
+
     HelpMenu helpMenu = new HelpMenu(getProject(), getUIFacade(), getProjectUIFacade());
     bar.add(helpMenu.createMenu());
+
+
 
     System.err.println("4. creating views...");
     myGanttChartTabContent = new GanttChartTabContentPanel(getProject(), getUIFacade(), getTree(), area.getJComponent(),
@@ -353,6 +362,8 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
         getResourcePanel().area);
     getViewManager().createView(myResourceChartTabContent, new ImageIcon(getClass().getResource("/icons/res_16.gif")));
     getViewManager().toggleVisible(myResourceChartTabContent);
+
+
 
     addComponentListener(new ComponentAdapter() {
       @Override
