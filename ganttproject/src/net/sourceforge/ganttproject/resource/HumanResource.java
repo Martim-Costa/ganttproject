@@ -46,7 +46,9 @@ public class HumanResource implements CustomPropertyHolder {
    */
   private boolean areEventsEnabled = true;
 
-  private String teste;
+  private String numberOfTasks;
+
+  private String completedTasks;
   private int id = -1;
 
   private String name;
@@ -229,7 +231,25 @@ public class HumanResource implements CustomPropertyHolder {
 
   public void setNumberOfAssignments(){
 
-    teste = String.valueOf(myAssignments.size());
+    numberOfTasks = String.valueOf(myAssignments.size());
+  }
+
+  public String getCompletedTasks(){
+
+    int t = 0;
+      for (int i = 0; i < myAssignments.size(); i++){
+
+        if (getAssignments()[i].getTask().getCompletionPercentage() == 100){
+
+          t++;
+        }
+      }
+    return String.valueOf(myAssignments.size() - t);
+  }
+
+  public void setCompletedTasks(){
+
+    completedTasks = getCompletedTasks();
   }
 
   public HumanResource unpluggedClone() {
