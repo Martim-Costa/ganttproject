@@ -37,15 +37,15 @@ import net.sourceforge.ganttproject.action.Stats.Stats;
 
 
 public class StatsMenu {
-        private  Stats stats;
-
+        private Stats stats;
 
         /*private final ViewLogAction myViewLogAction;*/
 
         public StatsMenu(IGanttProject project, UIFacade uiFacade, ProjectUIFacade projectUiFacade) {
-              /* Stats stats = new Stats();
 
-                myViewLogAction = new ViewLogAction(uiFacade);*/
+                stats = new Stats(project);
+
+                //myViewLogAction = new ViewLogAction(uiFacade);
 
         }
 
@@ -55,9 +55,9 @@ public class StatsMenu {
                 result.add(myViewLogAction);
                 return result;*/
                 JMenuBar menu = new JMenuBar();
-                JMenu estati = new JMenu("Estatisticas");
-                JMenuItem table = new JMenuItem("Tabela");
-                table.setToolTipText("Tabela de estatistica");
+                JMenu estati = new JMenu("Statistics");
+                JMenuItem table = new JMenuItem("Table");
+                table.setToolTipText("Statistics Table");
                 menu.add(estati);
                 estati.add(table);
                 table.addActionListener(new ActionListener() {

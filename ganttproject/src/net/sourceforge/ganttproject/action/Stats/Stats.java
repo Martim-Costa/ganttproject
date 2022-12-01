@@ -27,10 +27,6 @@ import net.sourceforge.ganttproject.task.TaskManager;
 import net.sourceforge.ganttproject.task.TaskManagerImpl;
 import net.sourceforge.ganttproject.IGanttProject;
 
-
-
-
-
 public class Stats {
 
     private final TaskManager myTaskManager;
@@ -46,7 +42,7 @@ public class Stats {
 
 
         panel.setBorder(BorderFactory.createTitledBorder(
-                BorderFactory.createEtchedBorder(), "ODI Rankings", TitledBorder.CENTER, TitledBorder.TOP));
+                BorderFactory.createEtchedBorder(), "Tasks Statistics", TitledBorder.CENTER, TitledBorder.TOP));
         /*String[][] rec = {
                 { "1", "Steve", "AUS" },
                 { "2", "Virat", "IND" },
@@ -56,7 +52,7 @@ public class Stats {
                 { "6", "Eion", "ENG" },
         };*/
         String[][] rec = getPercentage();
-        String[] header = { "Completadas", "Iniciadas", "Nao iniciadas" };
+        String[] header = { "Completed", "Started", "Not started" };
         JTable table = new JTable(rec, header);
         panel.add(new JScrollPane(table));
         frame.add(panel);
@@ -66,20 +62,21 @@ public class Stats {
 
 
     private String[][] getPercentage() {
-        int completed = 0;
-        int onDoing = 0;
-        int notStarted = 0;
+
+        double completed = 0.0;
+        double onDoing = 0.0;
+        double notStarted = 0.0;
+
         String[][] result = {{"0", "0", "0"}};
 
-        double calcutedCompleted = 0.0;
-        double calcutedOnDoing = 0.0;
-        double calcutedNotStarted = 0.0;
+        double calculatedCompleted;
+        double calculatedOnDoing;
+        double calculatedNotStarted;
 
         int numberOfTasks = myTaskManager.getTaskCount();
         if (numberOfTasks != 0) {
 
             for (int i = 0; i < numberOfTasks; i++) {
-
 
                 if (myTaskManager.getTasks()[i].getCompletionPercentage() == 100) {
                     completed++;
@@ -91,13 +88,13 @@ public class Stats {
             }
 
 
-            calcutedCompleted = (completed / numberOfTasks) * 100;
-            calcutedOnDoing = (onDoing / numberOfTasks) * 100;
-            calcutedNotStarted = (notStarted / numberOfTasks) * 100;
+            calculatedCompleted = (completed / numberOfTasks) * 100;
+            calculatedOnDoing = (onDoing / numberOfTasks) * 100;
+            calculatedNotStarted = (notStarted / numberOfTasks) * 100;
 
-            String str = calcutedCompleted + "";
-            String str1 = calcutedOnDoing + "";
-            String str2 = calcutedNotStarted + "";
+            String str = calculatedCompleted + "";
+            String str1 = calculatedOnDoing + "";
+            String str2 = calculatedNotStarted + "";
 
             result[0][0] = str;
             result[0][1] = str1;
