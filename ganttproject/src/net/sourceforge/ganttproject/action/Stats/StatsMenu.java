@@ -11,6 +11,14 @@ import javax.swing.JMenu;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import java.awt.EventQueue;
+import javax.swing.JFrame;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JToolBar;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 import net.sourceforge.ganttproject.GPLogger;
 import net.sourceforge.ganttproject.IGanttProject;
 import net.sourceforge.ganttproject.action.CancelAction;
@@ -23,46 +31,55 @@ import net.sourceforge.ganttproject.gui.ProjectUIFacade;
 import net.sourceforge.ganttproject.gui.UIFacade;
 import net.sourceforge.ganttproject.gui.UIUtil;
 import net.sourceforge.ganttproject.gui.ViewLogDialog;
-import net.sourceforge.ganttproject.gui.about.AboutDialog2;
 import net.sourceforge.ganttproject.language.GanttLanguage;
+
+import net.sourceforge.ganttproject.action.Stats.Stats;
 
 
 public class StatsMenu {
+        private  Stats stats;
 
-        private final AboutAction myAboutAction;
-        private final ViewLogAction myViewLogAction;
-        private final RecoverLastProjectAction myRecoverAction;
+
+        /*private final ViewLogAction myViewLogAction;*/
 
         public StatsMenu(IGanttProject project, UIFacade uiFacade, ProjectUIFacade projectUiFacade) {
-                myAboutAction = new AboutAction(uiFacade);
-                myViewLogAction = new ViewLogAction(uiFacade);
-                myRecoverAction = new RecoverLastProjectAction(project, uiFacade, projectUiFacade);
+              /* Stats stats = new Stats();
+
+                myViewLogAction = new ViewLogAction(uiFacade);*/
+
         }
 
         public JMenu createMenu() {
-                JMenu result = UIUtil.createTooltiplessJMenu(GPAction.createVoidAction("Estatisticas"));
-                result.add(myAboutAction);
+                /*JMenu result = UIUtil.createTooltiplessJMenu(GPAction.createVoidAction("Estatisticas"));
+                result.add(myStats);
                 result.add(myViewLogAction);
-                result.add(myRecoverAction);
-                return result;
-        }
+                return result;*/
+                JMenuBar menu = new JMenuBar();
+                JMenu estati = new JMenu("Estatisticas");
+                JMenuItem table = new JMenuItem("Tabela");
+                table.setToolTipText("Tabela de estatistica");
+                menu.add(estati);
+                estati.add(table);
+                table.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent ev) {
+                                stats.makeTable();
+                        }
 
-        private static class AboutAction extends GPAction {
-                private final UIFacade myUiFacade;
 
-                AboutAction(UIFacade uifacade) {
-                        super("Estatisticas");
-                        myUiFacade = uifacade;
-                }
 
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                        AboutDialog2 agp = new AboutDialog2(myUiFacade);
-                        agp.show();
-                }
-        }
+        });
+                return estati;}
 
-        private static class ViewLogAction extends GPAction {
+       /*private void StatsAction() {
+
+
+                        stats.makeTable();
+
+
+
+        }*/
+
+       /* private static class ViewLogAction extends GPAction {
                 private final UIFacade myUiFacade;
 
                 ViewLogAction(UIFacade uiFacade) {
@@ -70,78 +87,10 @@ public class StatsMenu {
                         myUiFacade = uiFacade;
                 }
 
-                @Override
+
                 public void actionPerformed(ActionEvent e) {
                         ViewLogDialog.show(myUiFacade);
                 }
-        }
-
-        private static class RecoverLastProjectAction extends GPAction {
-                private final UIFacade myUiFacade;
-                private final DocumentManager myDocumentManager;
-                private final IGanttProject myProject;
-                private final ProjectUIFacade myProjectUiFacade;
-
-                RecoverLastProjectAction(IGanttProject project, UIFacade uiFacade, ProjectUIFacade projectUiFacade) {
-                        super("Estatisticas");
-                        myProject = project;
-                        myUiFacade = uiFacade;
-                        myDocumentManager = project.getDocumentManager();
-                        myProjectUiFacade = projectUiFacade;
-                }
-
-                @Override
-                public void actionPerformed(ActionEvent arg0) {
-                        try {
-                                final Document lastAutosaveDocument = myDocumentManager.getLastAutosaveDocument(null);
-                                if (lastAutosaveDocument != null) {
-                                        runAction(lastAutosaveDocument);
-                                }
-                        } catch (IOException e) {
-                                GPLogger.log(new RuntimeException("Failed to read autosave documents", e));
-                        }
-                }
-
-                private void runAction(final Document autosaveDocument) {
-                        OkAction ok = new OkAction() {
-                                @Override
-                                public void actionPerformed(ActionEvent arg0) {
-                                        recover(autosaveDocument);
-                                }
-                        };
-                        CancelAction skip = new CancelAction("help.recover.skip") {
-                                @Override
-                                public void actionPerformed(ActionEvent arg0) {
-                                        SwingUtilities.invokeLater(new Runnable() {
-                                                @Override
-                                                public void run() {
-                                                        Document prevAutosaveDocument = null;
-                                                        try {
-                                                                prevAutosaveDocument = myDocumentManager.getLastAutosaveDocument(autosaveDocument);
-                                                        } catch (IOException e) {
-                                                                GPLogger.log(new RuntimeException("Failed to read autosave documents", e));
-                                                        }
-                                                        if (prevAutosaveDocument != null) {
-                                                                runAction(prevAutosaveDocument);
-                                                        }
-                                                }
-                                        });
-                                }
-                        };
-                        File f = new File(autosaveDocument.getFilePath());
-                        myUiFacade.showOptionDialog(
-                                JOptionPane.INFORMATION_MESSAGE,
-                                GanttLanguage.getInstance().formatText("help.recover.autosaveInfo", f.getName(), new Date(f.lastModified()),
-                                        f.length()), new Action[] { ok, skip, CancelAction.CLOSE });
-                }
-
-                protected void recover(Document recoverDocument) {
-                        try {
-                                myProjectUiFacade.openProject(new ReadOnlyProxyDocument(recoverDocument), myProject);
-                        } catch (Throwable e) {
-                                GPLogger.log(new RuntimeException("Failed to recover file " + recoverDocument.getFileName(), e));
-                        }
-                }
-        }
-
+        }*/
 }
+
