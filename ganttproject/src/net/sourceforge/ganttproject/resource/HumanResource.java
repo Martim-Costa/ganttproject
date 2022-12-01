@@ -48,7 +48,8 @@ public class HumanResource implements CustomPropertyHolder {
 
   private String numberOfTasks;
 
-  private String completedTasks;
+  private String notCompletedTasks;
+
   private int id = -1;
 
   private String name;
@@ -234,7 +235,7 @@ public class HumanResource implements CustomPropertyHolder {
     numberOfTasks = String.valueOf(myAssignments.size());
   }
 
-  public String getCompletedTasks(){
+  public String getNotCompletedTasks(){
 
     int t = 0;
       for (int i = 0; i < myAssignments.size(); i++){
@@ -244,12 +245,18 @@ public class HumanResource implements CustomPropertyHolder {
           t++;
         }
       }
-    return String.valueOf(myAssignments.size() - t);
+
+    int available = (myAssignments.size() - t);
+
+    if (available == 0)
+      return " 0 (Available)";
+    else
+      return String.valueOf(available) + " (Busy)";
   }
 
-  public void setCompletedTasks(){
+  public void setNotCompletedTasks(){
 
-    completedTasks = getCompletedTasks();
+    notCompletedTasks = getNotCompletedTasks();
   }
 
   public HumanResource unpluggedClone() {

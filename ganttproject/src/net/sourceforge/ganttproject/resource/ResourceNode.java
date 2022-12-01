@@ -72,9 +72,9 @@ public class ResourceNode extends ResourceTableNode {
     return resource.getRole();
   }
 
-  public void setToDo(String number){ resource.setCompletedTasks(); }
+  public void setToDo(String number){ resource.setNotCompletedTasks(); }
 
-  public String getToDo(){ return resource.getCompletedTasks(); }
+  public String getToDo(){ return resource.getNotCompletedTasks(); }
 
   @Override
   public Object getStandardField(ResourceDefaultColumn def) {
