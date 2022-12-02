@@ -1,0 +1,6 @@
+Reviewed by: Pedro Arruda 60663
+
+When it comes to diagram I think its well done overall, I just think that when it comes to the Add use cases you could have identified them differently to be able to distinguish them better.
+Also think this Adds should perhaps have an association to the actor so its less confusing.
+
+Other than that the diagram and the descriptions look good.
