@@ -1,0 +1,5 @@
+REVIEWED BY Martim Costa 64901
+----------------------------------------------------------------------------
+The Use Cases seem to be correct. From my analysis everything seems to be in order and in a easy way to understand 
+what import/export files and printing do in this app.
+Well Done!!
