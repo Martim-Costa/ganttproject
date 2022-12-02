@@ -1,0 +1,7 @@
+REVIEW DE RODRIGO MESQUITA 57372 - 02/12/2022
+
+This report seems to me to be very good, you made it easy to understand by going straight to the point
+and giving good examples with graphs and math functions.
+I also liked the way you concluded the report with the example of several possible cases of a code smell.
+
+-----------------------------------------------------------------------------------------------------------

@@ -1,0 +1,6 @@
+REVIEWED BY RODRIGO MESQUITA 57372
+
+Your use cases seem to be well done. I only noticed an error that you can fix quickly, you repeated
+some ID in different Use Cases, for example, both "Edit End Date" and "Earliest Begin" have the ID 13.
+
+------------------------------------------------------------------------------------------------------
