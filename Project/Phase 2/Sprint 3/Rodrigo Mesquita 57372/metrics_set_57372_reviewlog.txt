@@ -1,0 +1,4 @@
+Reviewed by Pedro Arruda 60663
+
+I think the metrics report is well done, the metrics are very well interpreted and just by working with the code I have to completely agree with the conclusion reached by my colleague.
+The report could be a bit better formatted but that also is kind of personal preference. Nothing else to add, good work overall.
