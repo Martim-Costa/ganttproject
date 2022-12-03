@@ -46,8 +46,6 @@ public class HumanResource implements CustomPropertyHolder {
    */
   private boolean areEventsEnabled = true;
 
-  private String numberOfTasks;
-
   private String notCompletedTasks;
 
   private int id = -1;
@@ -225,16 +223,10 @@ public class HumanResource implements CustomPropertyHolder {
     return myAssignments.toArray(new ResourceAssignment[0]);
   }
 
-  public String getNumberOfAssignments(){
-
-    return String.valueOf(myAssignments.size());
-  }
-
-  public void setNumberOfAssignments(){
-
-    numberOfTasks = String.valueOf(myAssignments.size());
-  }
-
+  /*
+   Running a cycle through the assignments to calculate the number of tasks that have to be completed
+   and return the built string to be presented
+   */
   public String getNotCompletedTasks(){
 
     int t = 0;

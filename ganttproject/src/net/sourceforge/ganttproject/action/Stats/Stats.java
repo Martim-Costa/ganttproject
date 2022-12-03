@@ -43,14 +43,7 @@ public class Stats {
 
         panel.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createEtchedBorder(), "Tasks Statistics", TitledBorder.CENTER, TitledBorder.TOP));
-        /*String[][] rec = {
-                { "1", "Steve", "AUS" },
-                { "2", "Virat", "IND" },
-                { "3", "Kane", "NZ" },
-                { "4", "David", "AUS" },
-                { "5", "Ben", "ENG" },
-                { "6", "Eion", "ENG" },
-        };*/
+
         String[][] rec = getPercentage();
         String[] header = { "Completed", "Started", "Not started" };
         JTable table = new JTable(rec, header);
@@ -92,9 +85,9 @@ public class Stats {
             calculatedOnDoing = (onDoing / numberOfTasks) * 100;
             calculatedNotStarted = (notStarted / numberOfTasks) * 100;
 
-            String str = calculatedCompleted + "";
-            String str1 = calculatedOnDoing + "";
-            String str2 = calculatedNotStarted + "";
+            String str = calculatedCompleted + "%";
+            String str1 = calculatedOnDoing + "%";
+            String str2 = calculatedNotStarted + "%";
 
             result[0][0] = str;
             result[0][1] = str1;
