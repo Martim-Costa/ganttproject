@@ -72,9 +72,9 @@ public class Stats {
             calculatedOnDoing = (onDoing / numberOfTasks) * 100;
             calculatedNotStarted = (notStarted / numberOfTasks) * 100;
 
-            String str = df.format(calculatedCompleted) + "";
-            String str1 = df.format(calculatedOnDoing) + "";
-            String str2 = df.format(calculatedNotStarted) + "";
+            String str = df.format(calculatedCompleted) + "%";
+            String str1 = df.format(calculatedOnDoing) + "%";
+            String str2 = df.format(calculatedNotStarted) + "%";
             String str3 = numberOfTasks + "";
 
             result[0][0] = str;
