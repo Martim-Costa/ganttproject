@@ -3,11 +3,9 @@ package net.sourceforge.ganttproject.action.Stats;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
-
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import javax.swing.JFrame;
 import javax.swing.border.TitledBorder;
 import javax.swing.JScrollPane;
@@ -27,11 +25,10 @@ public class Stats {
         myTaskManager = project.getTaskManager();
 
     }
-//This method calculates the percentage of each type of Tasks by completion(completed, started and not started
+//This method create the table
     public  void makeTable(){
         JFrame frame = new JFrame();
         JPanel panel = new JPanel();
-
 
         panel.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createEtchedBorder(), "Tasks Statistics", TitledBorder.CENTER, TitledBorder.TOP));
@@ -41,11 +38,11 @@ public class Stats {
         JTable table = new JTable(rec, header);
         panel.add(new JScrollPane(table));
         frame.add(panel);
-        frame.setSize(550, 400);
+        frame.setSize(550, 150);
         frame.setVisible(true);
     }
 
-
+    //This method calculates the percentage of each type of Tasks by completion(completed, started and not started)
     private String[][] getPercentage() {
 
         double completed = 0.0;
@@ -71,8 +68,6 @@ public class Stats {
                     notStarted++;
                 }
             }
-
-
             calculatedCompleted = (completed / numberOfTasks) * 100;
             calculatedOnDoing = (onDoing / numberOfTasks) * 100;
             calculatedNotStarted = (notStarted / numberOfTasks) * 100;
@@ -87,7 +82,6 @@ public class Stats {
             result[0][2] = str2;
             result[0][3] = str3;
         }
-
 
         return result;
 
