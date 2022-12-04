@@ -343,8 +343,8 @@ public class GanttProject extends GanttProjectBase implements ResourceView, Gant
     mHuman.add(myResourceActions.getResourceSendMailAction());
     bar.add(mHuman);
 
-
-    StatsMenu statsMenu =new StatsMenu(getProject(), getUIFacade(), getProjectUIFacade());
+// this will add a "button" to open the stats menu
+    StatsMenu statsMenu =new StatsMenu(getProject());
     bar.add(statsMenu.createMenu());
 
     HelpMenu helpMenu = new HelpMenu(getProject(), getUIFacade(), getProjectUIFacade());
